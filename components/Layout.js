@@ -21,18 +21,20 @@ const Layout = ({ children }) => {
           </NextLink>
           <div className={classes.grow}></div>
           <NextLink href='/cart' passHref>
-            <Link>Cart</Link>
+            <Link>
+              <Typography>Cart</Typography>
+            </Link>
           </NextLink>
           <NextLink href='/login' passHref>
-            <Link>Login</Link>
+            <Link>
+              <Typography>Login</Typography>
+            </Link>
           </NextLink>
         </Toolbar>
       </AppBar>
-      <Container className={classes.main}>
-        {children}
-      </Container>
+      <Container className={classes.main}>{children}</Container>
       <footer className={classes.footer}>
-        amba-store &copy; {date.getUTCFullYear()}. all rights reserved. 
+        amba-store &copy; {date.getUTCFullYear()}. all rights reserved.
       </footer>
     </div>
   );
