@@ -1,7 +1,11 @@
 import React from 'react';
+
 import { useRouter } from 'next/router';
 import  NextLink from 'next/link';
-import {Link, Typography} from '@mui/material';
+import Image from 'next/image';
+
+import {Link, Typography, Grid, List, ListItem, Card, Button} from '@mui/material';
+
 import useStyles from '../../utils/styles';
 import data from '../../utils/data';
 import Layout from '../../components/Layout';
@@ -15,7 +19,7 @@ const ProductScreen = () => {
     return <div>Product Not Found</div>
   }
   return (
-    <Layout title={product.name}>
+    <Layout title={product.name} description={product.description}>
       <div className={classes.section}>
         <NextLink href='/' passHref>
           <Link>
@@ -23,6 +27,63 @@ const ProductScreen = () => {
           </Link>
         </NextLink>
       </div>
+      <Grid container spacing={1}>
+        <Grid item md={6} xs={12}>
+          <Card>
+            <Image src={product.image} alt={product.name} width={640} height={640}></Image>
+          </Card>
+        </Grid>
+        <Grid md={3} xs={12}>
+          <List>
+            <ListItem>
+              <Typography component='h1'>{product.name}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Category: {product.category}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Brand: {product.brand}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Rating: {product.rating} Stars ({product.numReviews} Reviews)</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Description: {product.description}</Typography>
+            </ListItem>
+          </List>
+        </Grid>
+        <Grid item md={3} xs={12}>
+          <Card>
+            <List>
+              <ListItem> 
+                <Grid container>
+                  <Grid item xs={6}>
+                    <Typography>Price</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography>${product.price}</Typography>
+                  </Grid>
+                </Grid>
+              </ListItem>
+              <ListItem> 
+                <Grid container>
+                  <Grid item xs={6}>
+                    <Typography>Status</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography>{product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}</Typography>
+                  </Grid>
+                </Grid>
+              </ListItem>
+              <ListItem>
+                <Button type='button'variant='contained' fullWidth color='primary'>
+                  add to cart
+                </Button>
+              </ListItem>
+            </List>
+          </Card>
+        </Grid>
+      </Grid>
     </Layout>
   );
 }
