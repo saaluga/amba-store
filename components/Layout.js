@@ -4,13 +4,13 @@ import NextLink from 'next/link';
 import useStyles from '../utils/styles';
 import { AppBar, Container, Toolbar, Typography, Link } from '@mui/material';
 
-const Layout = ({ children }) => {
+const Layout = ({ title, children }) => {
   const date = new Date();
   const classes = useStyles();
   return (
     <div>
       <Head>
-        <title>amba-store</title>
+        <title>{title ? `${title} - amba-store`:'amba-store'}</title>
       </Head>
       <AppBar position='static' className={classes.navbar}>
         <Toolbar>
