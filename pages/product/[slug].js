@@ -36,7 +36,7 @@ const ProductScreen = () => {
         <Grid md={3} xs={12}>
           <List>
             <ListItem>
-              <Typography component='h1'>{product.name}</Typography>
+              <Typography component='h1' variant='h4'>{product.name}</Typography>
             </ListItem>
             <ListItem>
               <Typography>Category: {product.category}</Typography>
@@ -76,7 +76,7 @@ const ProductScreen = () => {
                 </Grid>
               </ListItem>
               <ListItem>
-                <Button type='button'variant='contained' fullWidth color='primary'>
+                <Button type='button'variant='outlined' fullWidth color='primary'>
                   add to cart
                 </Button>
               </ListItem>
